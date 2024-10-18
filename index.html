@@ -5,62 +5,131 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Galaxy Shooter Game</title>
     <style>
-      #welcome-screen {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh; /* Full viewport height */
-        background-color: #001f3f; /* Dark blue background */
-        color: #ffffff; /* White text color */
-        text-align: center;
-        font-family: "Arial", sans-serif;
-        padding: 20px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Shadow for depth */
-      }
+    #welcome-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 60%; /* Set a fixed width */
+  height: 500px; /* Adjust height based on content */
+  background-color: #001f3f; /* Dark blue background */
+  color: #ffffff; /* White text color */
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  padding: 40px; /* Add some padding for spacing */
+  margin: auto; /* Center horizontally */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+  position: relative; /* So it's not full screen */
+  top: 65%; /* Increase this to move it further down */
+  max-width: 800px; /* Set a maximum width */
+  min-width: 800px; /* Minimum width for small screens */
+  
+  animation: vibrate 0.5s infinite; /* Add the vibration animation */
+}
 
-      h1 {
-        font-size: 2.5em; /* Larger title font size */
-        margin-bottom: 20px; /* Space below title */
-      }
+/* Define the vibrate keyframes */
+@keyframes vibrate {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(2px, -2px); }
+  60% { transform: translate(-2px, -2px); }
+  80% { transform: translate(2px, 2px); }
+  100% { transform: translate(0); }
+}
 
-      #level-selection {
-        margin-bottom: 20px; /* Space below level selection */
-      }
 
-      label {
-        font-size: 1.2em; /* Slightly larger font for label */
-        margin-right: 10px; /* Space between label and select */
-      }
 
-      select {
-        padding: 5px; /* Padding inside the select */
-        font-size: 1em; /* Font size for select */
-        border: 2px solid #ffffff; /* White border */
-        border-radius: 5px; /* Rounded corners */
-        background-color: #001f3f; /* Match background */
-        color: #ffffff; /* White text */
-      }
 
-      select:focus {
-        outline: none; /* Remove default focus outline */
-        border-color: #ff4136; /* Highlight border color on focus */
-      }
+
+h1 {
+  font-size: 2.5em; /* Larger title font size */
+  margin-bottom: 20px; /* Space below title */
+  color: #c2b4b4;
+  animation: vibrate 0.3s infinite; /* Apply the vibration animation */
+}
+
+/* Define the vibrate keyframes */
+@keyframes vibrate {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(2px, -2px); }
+  60% { transform: translate(-2px, -2px); }
+  80% { transform: translate(2px, 2px); }
+  100% { transform: translate(0); }
+}
+
+
+#level-selection {
+  margin-bottom: 20px; /* Space below level selection */
+  color: #c4baba; /* Light text color */
+}
+
+/* Label styles */
+label {
+  font-size: 1.2em; /* Slightly larger font for label */
+  margin-right: 10px; /* Space between label and select */
+  color: #ffffff; /* Red color for label */
+  animation: vibrate 0.5s infinite; /* Add vibration animation */
+}
+
+/* Select dropdown styles */
+select {
+  padding: 5px 10px; /* Padding inside the select */
+  font-size: 1em; /* Font size for select */
+  border: 2px solid #ffffff; /* White border */
+  border-radius: 5px; /* Rounded corners */
+  background-color: #001f3f; /* Match background */
+  color: #ffffff; /* White text */
+  transition: border-color 0.3s, transform 0.3s; /* Transition for hover and animation effects */
+}
+
+/* Focus effect for select */
+select:focus {
+  outline: none; /* Remove default focus outline */
+  border-color: #ffffff; /* Highlight border color on focus */
+  transform: scale(1.05); /* Slightly larger on focus */
+}
+
+/* Keyframes for vibration animation */
+@keyframes vibrate {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(2px, -2px); }
+  60% { transform: translate(-2px, -2px); }
+  80% { transform: translate(2px, 2px); }
+  100% { transform: translate(0); }
+}
+
 
       #start-button {
-        padding: 10px 20px; /* Padding for button */
-        font-size: 1.5em; /* Larger font size for button */
-        background-color: #ff4136; /* Bright red background */
-        color: #ffffff; /* White text */
-        border: none; /* No border */
-        border-radius: 5px; /* Rounded corners */
-        cursor: pointer; /* Pointer cursor */
-        transition: background-color 0.3s; /* Transition for hover effect */
-      }
+  padding: 10px 20px; /* Padding for button */
+  font-size: 1.5em; /* Larger font size for button */
+  background-color: #ffffff; /* Bright red background */
+  color: #ffffff; /* White text */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor */
+  transition: background-color 0.3s, transform 0.3s; /* Transition for hover and animation effects */
+  
+  animation: vibrate 0.5s infinite; /* Add vibration animation */
+}
 
-      #start-button:hover {
-        background-color: #ff6347; /* Darker red on hover */
-      }
+/* Define the same vibrate keyframes */
+@keyframes vibrate {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(2px, -2px); }
+  60% { transform: translate(-2px, -2px); }
+  80% { transform: translate(2px, 2px); }
+  100% { transform: translate(0); }
+}
+
+#start-button:hover {
+  background-color: #c2332d; /* Darker red when hovered */
+  transform: scale(1.05); /* Slightly larger on hover */
+}
+
 
       #start-button:active {
         background-color: #ff2c20; /* Even darker on click */
@@ -96,7 +165,7 @@
       }
 
       #gameCanvas {
-        background: url("https://i.imgur.com/2azZnB4.png") no-repeat
+        background: url("https://cdn.pixabay.com/photo/2024/06/20/01/55/nebula-8841036_1280.png") no-repeat
           center/cover;
         border-radius: 10px;
         width: 100%;
