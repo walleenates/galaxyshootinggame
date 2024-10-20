@@ -357,7 +357,9 @@
 
       function restartGame() {
         gameOverScreen.style.display = "none";
-        startGame();
+        score = 0;  // Reset score to 0
+        scoreDisplay.innerText = score;  // Update the displayed score
+        startGame();  // Restart the game
       }
 
       function togglePause() {
@@ -415,7 +417,7 @@
             if (checkCollision(bullet, enemy)) {
               playHitSound();
               score++;
-              scoreDisplay.innerText = score;
+              scoreDisplay.innerText = score;  // Update score display
               bullets.splice(bIndex, 1);
               enemies.splice(index, 1);
             }
