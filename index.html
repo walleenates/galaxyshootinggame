@@ -4,233 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Galaxy Shooter Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet" />
     <style>
-    #welcome-screen {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 60%; /* Set a fixed width */
-  height: 500px; /* Adjust height based on content */
-  background-color: #001f3f; /* Dark blue background */
-  color: #ffffff; /* White text color */
-  text-align: center;
-  font-family: "Arial", sans-serif;
-  padding: 40px; /* Add some padding for spacing */
-  margin: auto; /* Center horizontally */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Shadow for depth */
-  position: relative; /* So it's not full screen */
-  top: 65%; /* Increase this to move it further down */
-  max-width: 800px; /* Set a maximum width */
-  min-width: 800px; /* Minimum width for small screens */
-  
-  animation: vibrate 0.5s infinite; /* Add the vibration animation */
-}
-
-/* Define the vibrate keyframes */
-@keyframes vibrate {
-  0% { transform: translate(0); }
-  20% { transform: translate(-2px, 2px); }
-  40% { transform: translate(2px, -2px); }
-  60% { transform: translate(-2px, -2px); }
-  80% { transform: translate(2px, 2px); }
-  100% { transform: translate(0); }
-}
-
-
-
-
-
-h1 {
-  font-size: 2.5em; /* Larger title font size */
-  margin-bottom: 20px; /* Space below title */
-  color: #c2b4b4;
-  animation: vibrate 0.3s infinite; /* Apply the vibration animation */
-}
-
-/* Define the vibrate keyframes */
-@keyframes vibrate {
-  0% { transform: translate(0); }
-  20% { transform: translate(-2px, 2px); }
-  40% { transform: translate(2px, -2px); }
-  60% { transform: translate(-2px, -2px); }
-  80% { transform: translate(2px, 2px); }
-  100% { transform: translate(0); }
-}
-
-
-#level-selection {
-  margin-bottom: 20px; /* Space below level selection */
-  color: #c4baba; /* Light text color */
-}
-
-/* Label styles */
-label {
-  font-size: 1.2em; /* Slightly larger font for label */
-  margin-right: 10px; /* Space between label and select */
-  color: #ffffff; /* Red color for label */
-  animation: vibrate 0.5s infinite; /* Add vibration animation */
-}
-
-/* Select dropdown styles */
-select {
-  padding: 5px 10px; /* Padding inside the select */
-  font-size: 1em; /* Font size for select */
-  border: 2px solid #ffffff; /* White border */
-  border-radius: 5px; /* Rounded corners */
-  background-color: #001f3f; /* Match background */
-  color: #ffffff; /* White text */
-  transition: border-color 0.3s, transform 0.3s; /* Transition for hover and animation effects */
-}
-
-/* Focus effect for select */
-select:focus {
-  outline: none; /* Remove default focus outline */
-  border-color: #ffffff; /* Highlight border color on focus */
-  transform: scale(1.05); /* Slightly larger on focus */
-}
-
-/* Keyframes for vibration animation */
-@keyframes vibrate {
-  0% { transform: translate(0); }
-  20% { transform: translate(-2px, 2px); }
-  40% { transform: translate(2px, -2px); }
-  60% { transform: translate(-2px, -2px); }
-  80% { transform: translate(2px, 2px); }
-  100% { transform: translate(0); }
-}
-
-
-      #start-button {
-  padding: 10px 20px; /* Padding for button */
-  font-size: 1.5em; /* Larger font size for button */
-  background-color: #ffffff; /* Bright red background */
-  color: #ffffff; /* White text */
-  border: none; /* No border */
-  border-radius: 5px; /* Rounded corners */
-  cursor: pointer; /* Pointer cursor */
-  transition: background-color 0.3s, transform 0.3s; /* Transition for hover and animation effects */
-  
-  animation: vibrate 0.5s infinite; /* Add vibration animation */
-}
-
-/* Define the same vibrate keyframes */
-@keyframes vibrate {
-  0% { transform: translate(0); }
-  20% { transform: translate(-2px, 2px); }
-  40% { transform: translate(2px, -2px); }
-  60% { transform: translate(-2px, -2px); }
-  80% { transform: translate(2px, 2px); }
-  100% { transform: translate(0); }
-}
-
-#start-button:hover {
-  background-color: #c2332d; /* Darker red when hovered */
-  transform: scale(1.05); /* Slightly larger on hover */
-}
-
-
-      #start-button:active {
-        background-color: #ff2c20; /* Even darker on click */
-      }
-
-      h2 {
-        font-size: 28px;
-        text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
-      }
-
-      @keyframes glow {
-        from {
-          text-shadow: 0 0 10px rgba(255, 255, 255, 0.7),
-            0 0 20px rgba(255, 255, 255, 0.7);
-        }
-        to {
-          text-shadow: 0 0 20px rgba(255, 255, 255, 1),
-            0 0 30px rgba(255, 255, 255, 1);
-        }
-      }
-
-      /* Game container styles */
-      #game-container {
-        display: none;
-        position: relative;
-        margin: 20px auto;
-        overflow: hidden;
-        max-width: 800px;
-        border: 2px solid #fff;
-        border-radius: 15px;
-        background: #0a0a0a;
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-      }
-
-      #gameCanvas {
-        background: url("https://cdn.pixabay.com/photo/2011/12/14/12/17/galaxy-11098_960_720.jpg") no-repeat
-          center/cover;
-        border-radius: 10px;
-        width: 100%;
-        height: auto; /* Maintain aspect ratio */
-      }
-
-      /* Score display */
-      #score-container {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        font-size: 20px;
-        background-color: rgba(0, 0, 0, 0.7);
-        padding: 8px;
-        border-radius: 8px;
-        box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
-      }
-
-      /* Button styles */
-      button {
-        padding: 12px 24px;
-        font-size: 18px;
-        background: linear-gradient(145deg, #007bff, #0056b3);
+      body {
+        font-family: 'Orbitron', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: black;
         color: white;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-        box-shadow: 0 0 15px rgba(0, 123, 255, 0.5);
       }
 
-      button:hover {
-        background-color: #0056b3;
-        transform: translateY(-3px);
-        box-shadow: 0 0 20px rgba(0, 123, 255, 0.7);
-      }
-
-      /* Game Over Screen */
-      #game-over {
-        display: none;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: rgba(0, 0, 0, 0.85);
-        padding: 30px;
+      /* Centered welcome screen */
+      #welcome-screen {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #001f3f;
+        color: #ffffff;
+        text-align: center;
+        padding: 40px;
         border-radius: 10px;
-        border: 2px solid #dc3545;
-        box-shadow: 0 0 20px rgba(220, 53, 69, 0.8);
-        animation: fadeIn 1s ease-in-out;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
       }
 
-      #game-over p {
-        font-size: 24px;
-        color: #fff;
-      }
-
-      #restart-button {
-        background-color: #28a745;
-      }
-
-      #restart-button:hover {
-        background-color: #218838;
-      }
-
+      /* Fade-in effect */
       @keyframes fadeIn {
         from {
           opacity: 0;
@@ -240,51 +39,217 @@ select:focus {
         }
       }
 
+      /* Glowing effect for text */
+      h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        color: #ffcc00;
+        animation: glow 1s infinite alternate;
+      }
+
+      @keyframes glow {
+        from {
+          text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        }
+        to {
+          text-shadow: 0 0 20px rgba(255, 255, 255, 1);
+        }
+      }
+
+      /* Selection options */
+      #level-selection {
+        margin-bottom: 20px;
+      }
+
+      label {
+        font-size: 1.2em;
+        color: #ffffff;
+        margin-right: 10px;
+      }
+
+      select {
+        padding: 10px 20px;
+        font-size: 1em;
+        border: 2px solid #ffffff;
+        border-radius: 8px;
+        background-color: #001f3f;
+        color: #ffffff;
+        transition: border-color 0.3s, transform 0.3s;
+      }
+
+      select:focus {
+        outline: none;
+        border-color: #ffcc00;
+        transform: scale(1.05);
+      }
+
+      /* Modern button styling */
+      #start-button {
+        padding: 12px 24px;
+        font-size: 1.5em;
+        background-color: #ffcc00;
+        color: #001f3f;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s;
+        box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
+      }
+
+      #start-button:hover {
+        background-color: #ffd700;
+        transform: scale(1.05);
+      }
+
+      #start-button:active {
+        background-color: #ffae00;
+      }
+
+      /* Game container styling */
+      #game-container {
+        display: none;
+        position: relative;
+        margin: 0 auto;
+        width: 800px;
+        height: 600px;
+        border: 2px solid #ffcc00;
+        border-radius: 15px;
+        background: #0a0a0a;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        overflow: hidden;
+      }
+
+      /* Game canvas with background */
+      #gameCanvas {
+        background: url("https://cdn.pixabay.com/photo/2011/12/14/12/17/galaxy-11098_960_720.jpg") no-repeat center center;
+        background-size: cover;
+        border-radius: 15px;
+        width: 100%;
+        height: 100%;
+      }
+
+      /* Score display */
+      #score-container {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-size: 18px;
+        color: #ffcc00;
+        font-weight: bold;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      }
+
+      /* Health bar */
+      #health-bar {
+        position: absolute;
+        top: 50px;
+        left: 10px;
+        background-color: #ff0000;
+        width: 100px;
+        height: 15px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      }
+
       /* Quit button in the game */
       #quit-button {
         position: absolute;
         top: 10px;
         right: 10px;
         background-color: #dc3545;
-        border-radius: 5px;
+        padding: 10px 20px;
+        border-radius: 8px;
+        border: none;
+        color: white;
+        cursor: pointer;
+        font-size: 14px;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        transition: background-color 0.3s;
       }
 
       #quit-button:hover {
-        background-color: #c82333;
+        background-color: #ff4444;
       }
 
-      /* Responsive Styles */
-      @media (max-width: 600px) {
-        h1 {
-          font-size: 24px;
-        }
+      /* Pause button */
+      #pause-button {
+        position: absolute;
+        top: 50px;
+        right: 10px;
+        background-color: #28a745;
+        padding: 10px 20px;
+        border-radius: 8px;
+        border: none;
+        color: white;
+        cursor: pointer;
+        font-size: 14px;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        transition: background-color 0.3s;
+      }
 
-        h2 {
-          font-size: 20px;
-        }
+      #pause-button:hover {
+        background-color: #3ecf58;
+      }
 
-        #score-container {
-          font-size: 16px;
-          padding: 6px;
-        }
+      /* Game Over Screen */
+      #game-over {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(0, 0, 0, 0.9);
+        padding: 30px;
+        border-radius: 10px;
+        color: white;
+        border: 2px solid #ff4444;
+        box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+        animation: fadeIn 1s ease-in-out;
+        text-align: center;
+      }
 
-        button {
-          padding: 8px 16px;
-          font-size: 16px;
-        }
+      #game-over h2 {
+        font-size: 28px;
+        margin-bottom: 20px;
+        color: #ff4444;
+      }
 
-        #game-over p {
-          font-size: 18px;
+      #game-over p {
+        font-size: 20px;
+        margin-bottom: 20px;
+      }
+
+      #restart-button {
+        background-color: #28a745;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      #restart-button:hover {
+        background-color: #3ecf58;
+      }
+
+      @media (max-width: 768px) {
+        #game-container {
+          width: 100%;
+          height: auto;
         }
       }
     </style>
   </head>
+
   <body>
     <div id="welcome-screen">
       <h1>Welcome to Galaxy Shooter</h1>
       <div id="level-selection">
-        <label
-          >Select Level:
+        <label>Select Level:
           <select id="level-select">
             <option value="easy">Easy</option>
             <option value="medium">Medium</option>
@@ -297,8 +262,10 @@ select:focus {
 
     <div id="game-container">
       <canvas id="gameCanvas"></canvas>
-
+      <div id="score-container">Score: <span id="score">0</span></div>
+      <div id="health-bar"></div>
       <button id="quit-button">Quit Game</button>
+      <button id="pause-button">Pause</button>
     </div>
 
     <div id="game-over">
@@ -307,276 +274,268 @@ select:focus {
       <button id="restart-button">Restart Game</button>
     </div>
 
+    <audio id="shoot-sound" src="shoot.mp3"></audio>
+    <audio id="hit-sound" src="hit.mp3"></audio>
+
     <script>
-    const startButton = document.getElementById("start-button");
-const quitButton = document.getElementById("quit-button");
-const welcomeScreen = document.getElementById("welcome-screen");
-const gameContainer = document.getElementById("game-container");
-const gameOverScreen = document.getElementById("game-over");
-const restartButton = document.getElementById("restart-button");
-const scoreDisplay = document.getElementById("score");
-const finalScoreDisplay = document.getElementById("final-score");
-const levelSelect = document.getElementById("level-select");
+      const startButton = document.getElementById("start-button");
+      const quitButton = document.getElementById("quit-button");
+      const welcomeScreen = document.getElementById("welcome-screen");
+      const gameContainer = document.getElementById("game-container");
+      const gameOverScreen = document.getElementById("game-over");
+      const restartButton = document.getElementById("restart-button");
+      const pauseButton = document.getElementById("pause-button");
+      const scoreDisplay = document.getElementById("score");
+      const finalScoreDisplay = document.getElementById("final-score");
+      const levelSelect = document.getElementById("level-select");
+      const healthBar = document.getElementById("health-bar");
+      const shootSound = document.getElementById("shoot-sound");
+      const hitSound = document.getElementById("hit-sound");
 
-let canvas,
-  ctx,
-  player,
-  playerImage,
-  enemies,
-  enemyImages = [],
-  bullets,
-  enemyBullets,
-  powerUps,
-  gameOver,
-  score,
-  enemySpeed,
-  bulletMultiplier = 1;
+      let canvas, ctx, player, playerImage, enemies, enemyImages = [], bullets, enemyBullets, gameOver, score, enemySpeed, bulletMultiplier = 1, lives = 3, healthBarWidth = 100, paused = false, bulletFollows = true, enemySpawnRate = 0.02;
 
-startButton.addEventListener("click", startGame);
-quitButton.addEventListener("click", quitGame);
-restartButton.addEventListener("click", restartGame);
+      startButton.addEventListener("click", startGame);
+      quitButton.addEventListener("click", quitGame);
+      restartButton.addEventListener("click", restartGame);
+      pauseButton.addEventListener("click", togglePause);
 
-// Preload enemy images
-const preloadEnemyImages = () => {
-  const enemyImageFiles = ["ufo.png", "ufo1.png", "ufo2.png"];
-  enemyImageFiles.forEach((file) => {
-    const img = new Image();
-    img.src = file;
-    enemyImages.push(img);
-  });
-};
+      const preloadEnemyImages = () => {
+        const enemyImageFiles = ["ufo.png", "ufo1.png", "ufo2.png"];
+        enemyImageFiles.forEach((file) => {
+          const img = new Image();
+          img.src = file;
+          enemyImages.push(img);
+        });
+      };
 
-// Preload power-up images
-const preloadPowerUpImages = () => {
-  const powerUpImage = new Image();
-  powerUpImage.src = "powerup.png"; // Path to the power-up image
-  return powerUpImage;
-};
+      function startGame() {
+        const level = levelSelect.value;
+        welcomeScreen.style.display = "none";
+        gameContainer.style.display = "block";
+        canvas = document.getElementById("gameCanvas");
+        ctx = canvas.getContext("2d");
+        canvas.width = 800;
+        canvas.height = 600;
 
-function startGame() {
-  const level = levelSelect.value;
-  welcomeScreen.style.display = "none";
-  gameContainer.style.display = "block";
-  canvas = document.getElementById("gameCanvas");
-  ctx = canvas.getContext("2d");
-  canvas.width = 800;
-  canvas.height = 600;
+        playerImage = new Image();
+        playerImage.src = "aircraft.png";
 
-  playerImage = new Image();
-  playerImage.src = "aircraft.png";
+        player = { x: canvas.width / 2 - 25, y: canvas.height - 70, width: 50, height: 50, speed: 5 };
 
-  player = {
-    x: canvas.width / 2 - 25,
-    y: canvas.height - 70,
-    width: 50,
-    height: 50,
-    speed: 5,
-  };
+        bullets = [];
+        enemies = [];
+        enemyBullets = [];
+        gameOver = false;
+        score = 0;
+        bulletMultiplier = 1;
+        lives = 3;
+        healthBarWidth = 100;
 
-  bullets = [];
-  enemies = [];
-  enemyBullets = [];
-  powerUps = [];
-  gameOver = false;
-  score = 0;
-  bulletMultiplier = 1;
+        // Adjust difficulty based on selected level
+        if (level === "medium") {
+          enemySpeed = 4;
+          bulletFollows = false;
+          enemySpawnRate = 0.03;  // More enemies spawn
+        } else if (level === "hard") {
+          enemySpeed = 6;
+          bulletFollows = false;
+          enemySpawnRate = 0.04;  // Even more enemies
+        } else {
+          enemySpeed = 2;
+          bulletFollows = true;
+          enemySpawnRate = 0.02;
+        }
 
-  enemySpeed = level === "easy" ? 2 : level === "medium" ? 4 : 6;
-
-  requestAnimationFrame(gameLoop);
-}
-
-function quitGame() {
-  welcomeScreen.style.display = "block";
-  gameContainer.style.display = "none";
-  gameOverScreen.style.display = "none";
-}
-
-function restartGame() {
-  gameOverScreen.style.display = "none";
-  startGame();
-}
-
-function gameLoop() {
-  if (gameOver) return;
-
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  ctx.drawImage(playerImage, player.x, player.y, player.width, player.height);
-
-  // Move and draw bullets
-  bullets.forEach((bullet, index) => {
-    // Move bullet toward the closest enemy
-    const closestEnemy = getClosestEnemy(bullet);
-    if (closestEnemy) {
-      const dx = closestEnemy.x + closestEnemy.width / 2 - (bullet.x + bullet.width / 2);
-      const dy = closestEnemy.y + closestEnemy.height / 2 - (bullet.y + bullet.height / 2);
-      const distance = Math.sqrt(dx * dx + dy * dy);
-      bullet.vx = (dx / distance) * 5; // Speed of the bullet
-      bullet.vy = (dy / distance) * 5; // Speed of the bullet
-    }
-
-    bullet.x += bullet.vx;
-    bullet.y += bullet.vy;
-
-    if (
-      bullet.y < 0 ||
-      bullet.x < 0 ||
-      bullet.x > canvas.width ||
-      bullet.y > canvas.height
-    ) {
-      bullets.splice(index, 1);
-    }
-    ctx.fillStyle = "red";
-    ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
-  });
-
-  // Move and draw enemies
-  enemies.forEach((enemy, index) => {
-    enemy.y += enemy.vy;
-
-    if (checkCollision(player, enemy)) {
-      endGame();
-    }
-
-    if (enemy.y > canvas.height) {
-      enemies.splice(index, 1);
-    }
-
-    bullets.forEach((bullet, bIndex) => {
-      if (checkCollision(bullet, enemy)) {
-        score++;
-        bullets.splice(bIndex, 1);
-        enemies.splice(index, 1);
+        requestAnimationFrame(gameLoop);
       }
-    });
 
-    const enemyImage = enemyImages[enemy.type];
-    ctx.drawImage(enemyImage, enemy.x, enemy.y, enemy.width, enemy.height);
+      function quitGame() {
+        welcomeScreen.style.display = "block";
+        gameContainer.style.display = "none";
+        gameOverScreen.style.display = "none";
+      }
 
-    if (Math.random() < 0.02) {
-      enemyBullets.push({
-        x: enemy.x + enemy.width / 2 - 2.5,
-        y: enemy.y + enemy.height,
-        width: 5,
-        height: 10,
-        vy: 3,
+      function restartGame() {
+        gameOverScreen.style.display = "none";
+        startGame();
+      }
+
+      function togglePause() {
+        paused = !paused;
+        if (!paused) {
+          requestAnimationFrame(gameLoop);  // Resume the game
+        }
+      }
+
+      function gameLoop() {
+        if (gameOver || paused) return;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Draw player
+        ctx.drawImage(playerImage, player.x, player.y, player.width, player.height);
+        drawHealthBar();
+
+        // Move and draw bullets
+        bullets.forEach((bullet, index) => {
+          const closestEnemy = getClosestEnemy(bullet);
+          if (closestEnemy) {
+            const dx = closestEnemy.x + closestEnemy.width / 2 - (bullet.x + bullet.width / 2);
+            const dy = closestEnemy.y + closestEnemy.height / 2 - (bullet.y + bullet.height / 2);
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            bullet.vx = (dx / distance) * 5;
+            bullet.vy = (dy / distance) * 5;
+          }
+
+          bullet.x += bullet.vx;
+          bullet.y += bullet.vy;
+
+          if (bullet.y < 0 || bullet.x < 0 || bullet.x > canvas.width || bullet.y > canvas.height) {
+            bullets.splice(index, 1);
+          }
+
+          ctx.fillStyle = "red";
+          ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
+        });
+
+        // Move and draw enemies
+        enemies.forEach((enemy, index) => {
+          enemy.y += enemy.vy;
+
+          if (checkCollision(player, enemy)) {
+            playHitSound();
+            endGame();
+          }
+
+          if (enemy.y > canvas.height) {
+            enemies.splice(index, 1);
+          }
+
+          bullets.forEach((bullet, bIndex) => {
+            if (checkCollision(bullet, enemy)) {
+              playHitSound();
+              score++;
+              scoreDisplay.innerText = score;
+              bullets.splice(bIndex, 1);
+              enemies.splice(index, 1);
+            }
+          });
+
+          const enemyImage = enemyImages[enemy.type];
+          ctx.drawImage(enemyImage, enemy.x, enemy.y, enemy.width, enemy.height);
+
+          if (Math.random() < 0.02) {
+            enemyBullets.push({
+              x: enemy.x + enemy.width / 2 - 2.5,
+              y: enemy.y + enemy.height,
+              width: 5,
+              height: 10,
+              vy: 3,
+              enemyIndex: index,  // Track which enemy this bullet belongs to
+            });
+          }
+        });
+
+        // Move and draw enemy bullets
+        enemyBullets.forEach((bullet, index) => {
+          bullet.y += bullet.vy;
+
+          if (checkCollision(player, bullet)) {
+            playHitSound();
+            endGame();
+          }
+
+          if (bullet.y > canvas.height) {
+            enemyBullets.splice(index, 1);
+          }
+
+          ctx.fillStyle = "orange";
+          ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
+        });
+
+        // Player movement
+        if (keys.ArrowLeft && player.x > 0) player.x -= player.speed;
+        if (keys.ArrowRight && player.x + player.width < canvas.width) player.x += player.speed;
+        if (keys.ArrowUp && player.y > 0) player.y -= player.speed;
+        if (keys.ArrowDown && player.y + player.height < canvas.height) player.y += player.speed;
+
+        // Add new enemies
+        if (Math.random() < enemySpawnRate) {
+          let x = Math.random() * (canvas.width - 40);
+          let y = -40;
+          let type = Math.floor(Math.random() * enemyImages.length);
+          enemies.push({ x, y, width: 40, height: 40, vy: enemySpeed, type });
+        }
+
+        requestAnimationFrame(gameLoop);  // Continue the game loop
+      }
+
+      function drawHealthBar() {
+        healthBar.style.width = `${healthBarWidth}px`;
+      }
+
+      function getClosestEnemy(bullet) {
+        let closest = null;
+        let minDistance = Infinity;
+
+        enemies.forEach((enemy) => {
+          const dx = enemy.x + enemy.width / 2 - (bullet.x + bullet.width / 2);
+          const dy = enemy.y + enemy.height / 2 - (bullet.y + bullet.height / 2);
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < minDistance) {
+            minDistance = distance;
+            closest = enemy;
+          }
+        });
+
+        return closest;
+      }
+
+      const keys = {};
+      window.addEventListener("keydown", (e) => (keys[e.key] = true));
+      window.addEventListener("keyup", (e) => (keys[e.key] = false));
+
+      window.addEventListener("keydown", (e) => {
+        if (e.key === " ") {
+          playShootSound();
+          for (let i = 0; i < bulletMultiplier; i++) {
+            bullets.push({ x: player.x + player.width / 2 - 2.5, y: player.y, width: 5, height: 10, vx: 0, vy: -5 });
+          }
+        }
       });
-    }
-  });
 
-  enemyBullets.forEach((bullet, index) => {
-    bullet.y += bullet.vy;
+      function checkCollision(rect1, rect2) {
+        return (
+          rect1.x < rect2.x + rect2.width &&
+          rect1.x + rect1.width > rect2.x &&
+          rect1.y < rect2.y + rect2.height &&
+          rect1.y + rect1.height > rect2.y
+        );
+      }
 
-    if (checkCollision(player, bullet)) {
-      endGame();
-    }
+      function playShootSound() {
+        shootSound.play();
+      }
 
-    if (bullet.y > canvas.height) {
-      enemyBullets.splice(index, 1);
-    }
+      function playHitSound() {
+        hitSound.play();
+      }
 
-    ctx.fillStyle = "orange";
-    ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
-  });
+      function endGame() {
+        if (lives <= 0) {
+          gameOver = true;
+          gameOverScreen.style.display = "block";
+          finalScoreDisplay.innerText = score;
+        } else {
+          lives -= 1;
+          player.x = canvas.width / 2 - 25;
+          player.y = canvas.height - 70;
+          healthBarWidth -= 30;
+        }
+      }
 
-  powerUps.forEach((powerUp, index) => {
-    powerUp.y += 2;
-    ctx.drawImage(preloadPowerUpImages(), powerUp.x, powerUp.y, powerUp.width, powerUp.height);
-
-    if (checkCollision(player, powerUp)) {
-      bulletMultiplier *= 2;
-      powerUps.splice(index, 1);
-    }
-  });
-
-  ctx.fillStyle = "white";
-  ctx.font = "20px Arial";
-  ctx.fillText(`Score: ${score}`, 10, 30);
-
-  if (keys.ArrowLeft && player.x > 0) player.x -= player.speed;
-  if (keys.ArrowRight && player.x + player.width < canvas.width)
-    player.x += player.speed;
-  if (keys.ArrowUp && player.y > 0) player.y -= player.speed;
-  if (keys.ArrowDown && player.y + player.height < canvas.height)
-    player.y += player.speed;
-
-  if (Math.random() < 0.02) {
-    let x = Math.random() * (canvas.width - 40);
-    let y = -40;
-    let type = Math.floor(Math.random() * enemyImages.length);
-    enemies.push({ x, y, width: 40, height: 40, vy: enemySpeed, type });
-  }
-
-  if (Math.random() < 0.01) {
-    let x = Math.random() * (canvas.width - 20);
-    powerUps.push({
-      x,
-      y: -20,
-      width: 20,
-      height: 20,
-    });
-  }
-
-  requestAnimationFrame(gameLoop);
-}
-
-function getClosestEnemy(bullet) {
-  let closest = null;
-  let minDistance = Infinity;
-
-  enemies.forEach((enemy) => {
-    const dx = enemy.x + enemy.width / 2 - (bullet.x + bullet.width / 2);
-    const dy = enemy.y + enemy.height / 2 - (bullet.y + bullet.height / 2);
-    const distance = Math.sqrt(dx * dx + dy * dy);
-
-    if (distance < minDistance) {
-      minDistance = distance;
-      closest = enemy;
-    }
-  });
-
-  return closest;
-}
-
-const keys = {};
-window.addEventListener("keydown", (e) => (keys[e.key] = true));
-window.addEventListener("keyup", (e) => (keys[e.key] = false));
-
-// Shooting bullets toward enemies
-window.addEventListener("keydown", (e) => {
-  if (e.key === " ") {
-    for (let i = 0; i < bulletMultiplier; i++) {
-      // Create a bullet that will track enemies
-      bullets.push({
-        x: player.x + player.width / 2 - 2.5,
-        y: player.y,
-        width: 5,
-        height: 10,
-        vx: 0, // Set initial velocity to 0; it will be updated in the game loop
-        vy: 0,
-      });
-    }
-  }
-});
-
-function checkCollision(rect1, rect2) {
-  return (
-    rect1.x < rect2.x + rect2.width &&
-    rect1.x + rect1.width > rect2.x &&
-    rect1.y < rect2.y + rect2.height &&
-    rect1.y + rect1.height > rect2.y
-  );
-}
-
-function endGame() {
-  gameOver = true;
-  gameOverScreen.style.display = "block";
-  finalScoreDisplay.innerText = `Final Score: ${score}`;
-}
-
-preloadEnemyImages();
-
+      preloadEnemyImages();
     </script>
   </body>
 </html>
